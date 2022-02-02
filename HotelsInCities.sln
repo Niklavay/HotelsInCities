@@ -10,9 +10,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelsInCities", "HotelsInC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{72DF2F9F-B200-4A12-ABAE-BD69FB5F67EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{34386005-E979-4263-9C1A-D761F06AA412}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelsInCities.Domain.Core", "Core\HotelsInCities.Domain.Core.csproj", "{34386005-E979-4263-9C1A-D761F06AA412}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{7B2837CB-A054-425E-BA91-8C83C4F30048}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelsInCities.Domain.Interfaces", "Interfaces\HotelsInCities.Domain.Interfaces.csproj", "{7B2837CB-A054-425E-BA91-8C83C4F30048}"
 	ProjectSection(ProjectDependencies) = postProject
 		{34386005-E979-4263-9C1A-D761F06AA412} = {34386005-E979-4263-9C1A-D761F06AA412}
 	EndProjectSection
@@ -21,7 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{64
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CF0EB79D-D140-4122-B55F-DA881B265905}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{5595ABB1-8996-4511-9727-ECE0B9B6CBFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelsInCities.Infrastructure.DataAccess", "DataAccess\HotelsInCities.Infrastructure.DataAccess.csproj", "{5595ABB1-8996-4511-9727-ECE0B9B6CBFF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelsInCities.Services.Intefaces", "HotelsInCities.Services.Intefaces\HotelsInCities.Services.Intefaces.csproj", "{44243A48-81B6-4129-99EC-AD5CD89EA622}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelsInCities.Infrastructure.Interfaces", "HotelsInCities.Infrastructure.Interfaces\HotelsInCities.Infrastructure.Interfaces.csproj", "{1DDB768E-E288-486A-B900-321740130757}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{5595ABB1-8996-4511-9727-ECE0B9B6CBFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5595ABB1-8996-4511-9727-ECE0B9B6CBFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5595ABB1-8996-4511-9727-ECE0B9B6CBFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44243A48-81B6-4129-99EC-AD5CD89EA622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44243A48-81B6-4129-99EC-AD5CD89EA622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44243A48-81B6-4129-99EC-AD5CD89EA622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44243A48-81B6-4129-99EC-AD5CD89EA622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DDB768E-E288-486A-B900-321740130757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDB768E-E288-486A-B900-321740130757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDB768E-E288-486A-B900-321740130757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DDB768E-E288-486A-B900-321740130757}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +65,8 @@ Global
 		{34386005-E979-4263-9C1A-D761F06AA412} = {72DF2F9F-B200-4A12-ABAE-BD69FB5F67EB}
 		{7B2837CB-A054-425E-BA91-8C83C4F30048} = {72DF2F9F-B200-4A12-ABAE-BD69FB5F67EB}
 		{5595ABB1-8996-4511-9727-ECE0B9B6CBFF} = {CF0EB79D-D140-4122-B55F-DA881B265905}
+		{44243A48-81B6-4129-99EC-AD5CD89EA622} = {64EEC20A-346B-4F8C-A7D9-608D63C3B8FC}
+		{1DDB768E-E288-486A-B900-321740130757} = {CF0EB79D-D140-4122-B55F-DA881B265905}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CE65E30-6D17-45C0-8BBF-44DE62722BB8}

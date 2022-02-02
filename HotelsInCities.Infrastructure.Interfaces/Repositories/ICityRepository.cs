@@ -5,6 +5,5 @@ namespace Interfaces
 {
     public interface ICityRepository : IGenericRepository<City, int>
     {
-
     }
 }
