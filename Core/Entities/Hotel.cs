@@ -14,5 +14,48 @@ namespace Core
         public string Comment { get; private set; }
 
         public Hotel() { }
+
+        public Hotel(
+            string name,
+            HotelRating hotelRating,
+            int cityId,
+            int roomsCount,
+            string comment
+            )
+        {
+            Name = name;
+            HotelRating = hotelRating;
+            CityId = cityId;
+            RoomsCount = roomsCount;
+            Comment = comment;
+        }
+
+        public void ChangeHotelName(string name)
+        {
+            if(name != null)
+                Name = name;
+        }
+        public void ChangeHotelRating(HotelRating hotelRating)
+        {
+            HotelRating = hotelRating;
+        }
+
+        public void ChangeCity(int cityId)
+        {
+            if(cityId >= 0 && CityId != cityId)
+                CityId = cityId;
+        }
+
+        public void ChangeAmountOfRooms(int roomsCount)
+        {
+            if(roomsCount > 0)
+                RoomsCount = roomsCount;
+        }
+
+        public void ChangeComment(string comment)
+        {
+            if(comment != null)
+                Comment = comment;
+        }
     }
 }
