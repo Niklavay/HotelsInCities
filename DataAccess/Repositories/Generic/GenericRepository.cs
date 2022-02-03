@@ -75,8 +75,6 @@ namespace HotelsInCities.Infrastructure.DataAccess.Repositories.Generic
         public virtual async Task Insert(TEntity entity)
         {
             await _dbSet.AddAsync(entity);
-
-
         }
 
 

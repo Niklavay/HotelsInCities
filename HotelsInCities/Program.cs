@@ -1,4 +1,5 @@
 using DataAccess;
+using HotelsInCities.ServicesConfiguration;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,9 @@ builder.Services.AddDbContext<HICDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddRepository();
+builder.Services.AddServices();
 
 var app = builder.Build();
 

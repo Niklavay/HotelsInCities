@@ -5,26 +5,32 @@ namespace Core
 {
     public class City : IGenericEntity<int>
     {
-        private readonly List<Hotel> hotels;
+        private readonly List<Hotel> hotels = new List<Hotel>();
 
         public int Id { get; private set; } 
+
         [Required(ErrorMessage = "Please name the city.")]
-        public string Name { get; private set; }
+        public string? Name { get; private set; }
+
         [Required]
         public int Population { get; private set; }
+
         [Required(ErrorMessage = "Every city has it's own coordinates.")]
-        public int GPSCoordinates { get; private set; }
+        public int Longitude { get; private set; }
+
+        [Required(ErrorMessage = "Every city has it's own coordinates.")]
+        public int Latitude { get; private set; }
 
         public City()
         {
-            hotels = new List<Hotel>();
         }
 
-        public City (string name, int population, int gpsCoordinates)
+        public City (string name, int population, int latitude, int longitude)
         {
             Name = name;
             Population = population;
-            GPSCoordinates = gpsCoordinates;
+            Latitude = latitude;
+            Longitude = longitude;
         }
 
         public IEnumerable<Hotel> Hotels
@@ -57,9 +63,9 @@ namespace Core
             Population = newPopulation;
         }
 
-        public void ChangeGPSCoordinates(int newGPSCoordinates)
+        /*public void ChangeGPSCoordinates(int newLon)
         {
             GPSCoordinates = newGPSCoordinates;
-        }
+        }*/
     }
 }
