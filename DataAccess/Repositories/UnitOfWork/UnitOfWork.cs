@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HotelsInCities.Infrastructure.DataAccess.Repositories.UnitOfWork
 {
-    internal class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private ICityRepository _cityRepository;
 

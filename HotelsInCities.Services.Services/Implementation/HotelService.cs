@@ -17,17 +17,16 @@ namespace HotelsInCities.Services.Services.Implementation
         {
            return await _unitOfWork.HotelRepository.GetById(id);
         }
+
         public async Task Delete(int id)
         {
             await _unitOfWork.HotelRepository.Delete(id);
         }
 
-        public Task<IEnumerable<Hotel>> GetAll()
+        public async Task<IEnumerable<Hotel>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.HotelRepository.GetAll();
         }
-
-        
 
         public async Task Update(Hotel hotel)
         {
