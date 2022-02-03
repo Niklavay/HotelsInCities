@@ -1,5 +1,53 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Core.City>
+
 @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Population)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var city in Model) {
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => city.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => city.Population)
+        </th>
+        <th></th>
+    </tr>
+    foreach(var hotel in city.Hotels )
+        {
+           <tr>
+        <td>
+            @Html.DisplayFor(modelItem => hotel.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => hotel.City.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=hotel.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=hotel.Id  }) |
+            @Html.ActionLink("Delete", "Delete", new { id=hotel.Id })
+        </td>
+    </tr> 
+        }
+        
+}
+
+</table>

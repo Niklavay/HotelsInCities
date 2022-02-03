@@ -1,14 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HotelsInCities.Services.Intefaces.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelsInCities.Controllers
 {
     public class CityController : Controller
     {
-        // GET: CityController
-        public ActionResult Index()
+        private readonly ICityService _cityService;
+        public CityController(ICityService cityService)
         {
-            return View();
+            _cityService = cityService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var result = await _cityService.GetAll();
+            return View(result);
         }
 
         // GET: CityController/Details/5
