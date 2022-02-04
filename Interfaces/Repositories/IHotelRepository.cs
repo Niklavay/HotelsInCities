@@ -1,4 +1,5 @@
 ﻿using Core;
+using HotelsInCities.Domain.Core;
 using Interfaces.Generic;
 
 namespace Interfaces.Repositories

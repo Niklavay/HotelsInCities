@@ -5,13 +5,12 @@ namespace HotelsInCities.ServicesConfiguration
 {
     public static class AutoMapperConfiguration
     {
-        public static void AddMapper(this IServiceCollection services, IConfiguration configuration)
+        public static void AddMapper(this IServiceCollection services)
         {
             var mapperConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new CityProfile());
-               
-
+                mc.AddProfile(new HotelProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

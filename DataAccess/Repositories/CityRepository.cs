@@ -1,4 +1,5 @@
 ﻿using Core;
+using HotelsInCities.Domain.Core;
 using HotelsInCities.Infrastructure.DataAccess.Repositories.Generic;
 using Interfaces;
 using System;

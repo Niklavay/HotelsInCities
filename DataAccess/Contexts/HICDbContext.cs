@@ -1,4 +1,5 @@
 ﻿using Core;
+using HotelsInCities.Domain.Core;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
