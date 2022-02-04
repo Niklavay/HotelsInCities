@@ -1,5 +1,5 @@
 ﻿@using HotelsInCities.Infrastructure.WeatherForecast.ResponseEntities
-@model WeatherForecastResponse
+@model string
 
 @{
     ViewBag.Title = "Index";
@@ -11,14 +11,14 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Temp)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Summary)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -26,14 +26,14 @@
    
     <tr>
         <td>
-            @Html.DisplayFor(model => model.City)
+            @Html.DisplayFor(model => model)
         </td>
-        <td>
+       @* <td>
             @Html.DisplayFor(model => model.Temp)
         </td>
         <th>
             @Html.DisplayFor(model => model.Summary)
-        </th>
+        </th>*@
     </tr> 
 
 </table>

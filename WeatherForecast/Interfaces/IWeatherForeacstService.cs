@@ -11,6 +11,6 @@ namespace HotelsInCities.Infrastructure.WeatherForecast.Interfaces
 {
     public interface IWeatherForeacstService
     {
-        Task<WeatherForecastResponse> GetWeatherForecast(int cityId);
+        Task<string> GetWeatherForecast(int cityId);
     }
 }
