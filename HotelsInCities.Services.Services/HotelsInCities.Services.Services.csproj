@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HotelsInCities.Services.Intefaces\HotelsInCities.Services.Intefaces.csproj" />
     <ProjectReference Include="..\Interfaces\HotelsInCities.Domain.Interfaces.csproj" />
   </ItemGroup>

@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace DataAccess.Migrations
+namespace HotelsInCities.Infrastructure.DataAccess.Migrations
 {
-    public partial class InitMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,8 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Population = table.Column<int>(type: "int", nullable: false),
-                    GPSCoordinates = table.Column<int>(type: "int", nullable: false)
+                    Longitude = table.Column<double>(type: "float", nullable: false),
+                    Latitude = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

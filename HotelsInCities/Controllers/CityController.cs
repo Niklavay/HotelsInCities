@@ -1,4 +1,5 @@
-﻿using HotelsInCities.Services.Intefaces.Interfaces;
+﻿using HotelsInCities.Services.Intefaces.DTO_s;
+using HotelsInCities.Services.Intefaces.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,25 +18,18 @@ namespace HotelsInCities.Controllers
             return View(result);
         }
 
-        // GET: CityController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: CityController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CityController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(CityDTO cityDTO)
         {
             try
             {
+                await _cityService.Create(cityDTO);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -44,19 +38,19 @@ namespace HotelsInCities.Controllers
             }
         }
 
-        // GET: CityController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var city = await _cityService.GetById(id);
+            return View(city);
         }
 
-        // POST: CityController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, CityDTO city)
         {
             try
             {
+                await _cityService.Update(id, city);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -65,25 +59,30 @@ namespace HotelsInCities.Controllers
             }
         }
 
-        // GET: CityController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var city = await _cityService.GetById(id);
+            return View(city);
         }
 
-        // POST: CityController/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try
             {
+                await _cityService.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
+        }
+
+        public ActionResult Hotels(int id)
+        {
+            return RedirectToAction("Index", "Hotel", new { id = id });
         }
     }
 }

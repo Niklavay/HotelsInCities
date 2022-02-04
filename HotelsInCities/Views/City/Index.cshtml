@@ -22,31 +22,22 @@
     </tr>
 
 @foreach (var city in Model) {
+   
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => city.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => city.Population)
-        </th>
-        <th></th>
-    </tr>
-    foreach(var hotel in city.Hotels )
-        {
-           <tr>
         <td>
-            @Html.DisplayFor(modelItem => hotel.Name)
+            @Html.DisplayFor(modelItem => city.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => hotel.City.Name)
+            @Html.DisplayFor(modelItem => city.Population)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=hotel.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=hotel.Id  }) |
-            @Html.ActionLink("Delete", "Delete", new { id=hotel.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=city.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=city.Id }) |
+            @Html.ActionLink("Show hotels", "Hotels", new { id=city.Id  }) |
+            @Html.ActionLink("Show Weather Forecast", "Weather", new { id=city.Id })
         </td>
     </tr> 
-        }
+      
         
 }
 
