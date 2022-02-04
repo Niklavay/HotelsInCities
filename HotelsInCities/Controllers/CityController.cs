@@ -1,4 +1,5 @@
 ﻿using HotelsInCities.Services.Intefaces.DTO_s;
+using HotelsInCities.Services.Intefaces.DTO_s.City;
 using HotelsInCities.Services.Intefaces.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -83,6 +84,11 @@ namespace HotelsInCities.Controllers
         public ActionResult Hotels(int id)
         {
             return RedirectToAction("Index", "Hotel", new { id = id });
+        }
+
+        public ActionResult WeatherForecast(int cityId)
+        {
+            return RedirectToAction("Index", "WeatherForecast", new {id = cityId});
         }
     }
 }

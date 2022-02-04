@@ -1,6 +1,9 @@
-﻿using Core;
+﻿using AutoMapper;
+using Core;
+using HotelsInCities.Domain.Core;
 using HotelsInCities.Infrastructure.Interfaces.Repositories.UnitOfWork;
 using HotelsInCities.Services.Intefaces.DTO_s;
+using HotelsInCities.Services.Intefaces.DTO_s.Hotel;
 using HotelsInCities.Services.Intefaces.Interfaces;
 
 namespace HotelsInCities.Services.Services.Implementation
@@ -8,10 +11,11 @@ namespace HotelsInCities.Services.Services.Implementation
     public class HotelService : IHotelService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public HotelService(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public HotelService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public async Task Create(HotelDTO hotelDTO)
@@ -21,9 +25,10 @@ namespace HotelsInCities.Services.Services.Implementation
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<Hotel> GetById(int id)
+        public async Task<HotelDTO> GetById(int id)
         {
-           return await _unitOfWork.HotelRepository.GetById(id);
+            var hotel = await _unitOfWork.HotelRepository.GetById(id);
+            return _mapper.Map<Hotel,HotelDTO>(hotel);
         }
 
         public async Task Delete(int id)
@@ -32,13 +37,15 @@ namespace HotelsInCities.Services.Services.Implementation
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Hotel>> GetAll()
+        public async Task<IEnumerable<HotelDTO>> GetAll()
         {
-            return await _unitOfWork.HotelRepository.GetAll();
+            var hotels = await _unitOfWork.HotelRepository.GetAll();
+            return _mapper.Map<List<Hotel>,IEnumerable<HotelDTO>>(hotels);
         }
-        public async Task<IEnumerable<Hotel>> GetAllByCityId(int id)
+        public async Task<IEnumerable<HotelDTO>> GetAllByCityId(int id)
         {
-            return await _unitOfWork.HotelRepository.Get(filter: h => h.CityId == id);
+            var hotels = await _unitOfWork.HotelRepository.Get(filter: h => h.CityId == id);
+            return _mapper.Map<List<Hotel>, IEnumerable<HotelDTO>>(hotels);
         }
         public async Task Update(int id, HotelDTO hotelDTO)
         {

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Core.City>
+﻿@using HotelsInCities.Services.Intefaces.DTO_s.City
+@model IEnumerable<FullCityDTO>
 
 @{
     ViewBag.Title = "Index";
@@ -18,6 +19,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Population)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
         <th></th>
     </tr>
 
@@ -30,11 +37,17 @@
         <td>
             @Html.DisplayFor(modelItem => city.Population)
         </td>
+        <th>
+            @Html.DisplayFor(modelItem => city.Longitude)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => city.Latitude)
+        </th>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=city.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=city.Id }) |
             @Html.ActionLink("Show hotels", "Hotels", new { id=city.Id  }) |
-            @Html.ActionLink("Show Weather Forecast", "Weather", new { id=city.Id })
+            @Html.ActionLink("Show Weather Forecast", "WeatherForecast", new { id=city.Id })
         </td>
     </tr> 
       

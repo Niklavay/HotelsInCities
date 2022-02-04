@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\HotelsInCities.Infrastructure.DataAccess.csproj" />
     <ProjectReference Include="..\HotelsInCities.Services.Services\HotelsInCities.Services.Services.csproj" />
+    <ProjectReference Include="..\WeatherForecast\HotelsInCities.Infrastructure.WeatherForecast.csproj" />
   </ItemGroup>
 
 </Project>

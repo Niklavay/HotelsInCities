@@ -10,8 +10,7 @@ namespace HotelsInCities.ServicesConfiguration
             var mapperConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new CityProfile());
-               
-
+                mc.AddProfile(new HotelProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

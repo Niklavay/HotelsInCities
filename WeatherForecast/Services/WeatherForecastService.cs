@@ -1,5 +1,7 @@
 ﻿using HotelsInCities.Infrastructure.WeatherForecast.Interfaces;
+using HotelsInCities.Infrastructure.WeatherForecast.ResponseEntities;
 using HotelsInCities.Infrastructure.WeatherForecast.ViewModels;
+using HotelsInCities.Services.Intefaces.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -12,43 +14,37 @@ namespace HotelsInCities.Infrastructure.WeatherForecast.Services
 {
     public class WeatherForecastService : IWeatherForeacstService
     {
-        readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
+        private readonly ICityService _cityService;
 
-        public WeatherForecastService(IConfiguration configuration)
+        public WeatherForecastService(IConfiguration configuration, ICityService cityService)
         {
+            _cityService = cityService;
             _configuration = configuration;
         }
-        public async Task<OpenWeatherResponse> GetWeatherForecast(int longitude, int latitude)
+        public async Task<WeatherForecastResponse> GetWeatherForecast(int cityId)
         {
+            var city = await _cityService.GetById(cityId);
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(_configuration["WeatherForecastUri:Uri"]);
-                var response = await client.GetAsync($"/data/2.5/onecall?lat={latitude}&lon={longitude}&exclude=daily&appid={_configuration["WeatherForecastAPIKey:Key"]}");
+                var response = await client.GetAsync($"/data/2.5/onecall?lat={city.Latitude}&lon={city.Longitude}&exclude=daily&appid={_configuration["WeatherForecastAPIKey:Key"]}");
                 response.EnsureSuccessStatusCode();
                 
                 var stringResult = await response.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<OpenWeatherResponse>(stringResult);
+                var rawWeather = JsonConvert.DeserializeObject<OpenWeatherResponse>(stringResult);
+
+                return new WeatherForecastResponse { City = rawWeather.Name,
+                                                     Temp = rawWeather.Main.Temp,
+                                                     Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main)) 
+                };
             }
         }
     }
-    public class OpenWeatherResponse
-    {
-        public string Name { get; set; }
+   
 
-        public IEnumerable<WeatherDescription> Weather { get; set; }
+   
 
-        public Main Main { get; set; }
-    }
-
-    public class WeatherDescription
-    {
-        public string Main { get; set; }
-        public string Description { get; set; }
-    }
-
-    public class Main
-    {
-        public string Temp { get; set; }
-    }
+    
 }

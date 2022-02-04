@@ -1,4 +1,5 @@
-﻿using HotelsInCities.Infrastructure.WeatherForecast.Services;
+﻿using HotelsInCities.Infrastructure.WeatherForecast.ResponseEntities;
+using HotelsInCities.Infrastructure.WeatherForecast.Services;
 using HotelsInCities.Infrastructure.WeatherForecast.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace HotelsInCities.Infrastructure.WeatherForecast.Interfaces
 {
     public interface IWeatherForeacstService
     {
-        Task<OpenWeatherResponse> GetWeatherForecast(int longitude, int latitude);
+        Task<WeatherForecastResponse> GetWeatherForecast(int cityId);
     }
 }

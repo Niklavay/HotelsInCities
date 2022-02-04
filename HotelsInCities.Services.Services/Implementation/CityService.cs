@@ -8,16 +8,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HotelsInCities.Services.Intefaces.DTO_s.City;
+using AutoMapper;
+using HotelsInCities.Domain.Core;
 
 namespace HotelsInCities.Services.Services.Implementation
 {
     public class CityService : ICityService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public CityService(IUnitOfWork unitOfWork)
+        public CityService(IUnitOfWork unitOfWork, IMapper _mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = _mapper;
         }
 
         public async Task Create(CityDTO cityDTO)
@@ -28,9 +33,10 @@ namespace HotelsInCities.Services.Services.Implementation
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<City> GetById(int id)
+        public async Task<CityDTO> GetById(int id)
         {
-            return await _unitOfWork.CityRepository.GetById(id);
+            var city = await _unitOfWork.CityRepository.GetById(id);
+            return _mapper.Map<CityDTO>(city);
         }
 
         public async Task Delete(int id)
@@ -39,12 +45,17 @@ namespace HotelsInCities.Services.Services.Implementation
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<City>> GetAll()
+        public async Task<IEnumerable<FullCityDTO>> GetAll()
         {
-            var result = await _unitOfWork.CityRepository.GetAll(include: c => c.Include(c => c.Hotels));
-            return result;
+            var result = await _unitOfWork.CityRepository.GetAll();
+            return _mapper.Map<List<City>,IEnumerable<FullCityDTO>>(result);
         }
 
+        public async Task<IEnumerable<CityForCreationHotelDTO>> GetAllForHotelCreation()
+        {
+            var result = await _unitOfWork.CityRepository.GetAll(include: c => c.Include(c => c.Hotels));
+            return _mapper.Map<List<City>, IEnumerable<CityForCreationHotelDTO>>(result);
+        }
         public async Task Update(int id, CityDTO cityDTO)
         {
             if (cityDTO != null)

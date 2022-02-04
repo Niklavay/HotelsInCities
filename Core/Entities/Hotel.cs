@@ -1,7 +1,7 @@
 ﻿using Core.Enums;
 using Core.Generic;
 
-namespace Core
+namespace HotelsInCities.Domain.Core
 {
     public  class Hotel : IGenericEntity<int>
     {

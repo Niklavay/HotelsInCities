@@ -14,6 +14,7 @@ builder.Services.AddDbContext<HICDbContext>(options =>
 
 builder.Services.AddRepository();
 builder.Services.AddServices();
+builder.Services.AddMapper(builder.Configuration);
 
 var app = builder.Build();
 

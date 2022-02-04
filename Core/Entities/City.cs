@@ -1,7 +1,7 @@
 ﻿using Core.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Core
+namespace HotelsInCities.Domain.Core
 {
     public class City : IGenericEntity<int>
     {

@@ -1,5 +1,6 @@
 ﻿using HotelsInCities.Models;
 using HotelsInCities.Services.Intefaces.DTO_s;
+using HotelsInCities.Services.Intefaces.DTO_s.Hotel;
 using HotelsInCities.Services.Intefaces.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,7 +26,7 @@ namespace HotelsInCities.Controllers
 
         public async Task<IActionResult> Create()
         {
-            SelectList cities = new SelectList(await _cityService.GetAll(), "Id", "Name");
+            SelectList cities = new SelectList(await _cityService.GetAllForHotelCreation(), "Id", "Name");
             ViewBag.Cities = cities;
             return View();
         }
