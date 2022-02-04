@@ -5,7 +5,7 @@ namespace HotelsInCities.ServicesConfiguration
 {
     public static class AutoMapperConfiguration
     {
-        public static void AddMapper(this IServiceCollection services, IConfiguration configuration)
+        public static void AddMapper(this IServiceCollection services)
         {
             var mapperConfig = new MapperConfiguration(mc =>
             {

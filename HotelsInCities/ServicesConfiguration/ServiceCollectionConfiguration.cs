@@ -1,4 +1,6 @@
-﻿using HotelsInCities.Services.Intefaces.Interfaces;
+﻿using HotelsInCities.Infrastructure.WeatherForecast.Interfaces;
+using HotelsInCities.Infrastructure.WeatherForecast.Services;
+using HotelsInCities.Services.Intefaces.Interfaces;
 using HotelsInCities.Services.Services.Implementation;
 
 namespace HotelsInCities.ServicesConfiguration
@@ -9,6 +11,7 @@ namespace HotelsInCities.ServicesConfiguration
         {
             services.AddTransient<ICityService, CityService>();
             services.AddTransient<IHotelService, HotelService>();
+            services.AddTransient<IWeatherForeacstService, WeatherForecastService>();
         }
     }
 }

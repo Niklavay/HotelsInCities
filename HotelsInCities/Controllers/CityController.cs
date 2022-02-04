@@ -86,9 +86,9 @@ namespace HotelsInCities.Controllers
             return RedirectToAction("Index", "Hotel", new { id = id });
         }
 
-        public ActionResult WeatherForecast(int cityId)
+        public ActionResult WeatherForecast(int id)
         {
-            return RedirectToAction("Index", "WeatherForecast", new {id = cityId});
+            return RedirectToAction("Index", "WeatherForecast", new {id = id});
         }
     }
 }

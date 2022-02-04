@@ -42,10 +42,10 @@ namespace HotelsInCities.Services.Services.Implementation
             var hotels = await _unitOfWork.HotelRepository.GetAll();
             return _mapper.Map<List<Hotel>,IEnumerable<HotelDTO>>(hotels);
         }
-        public async Task<IEnumerable<HotelDTO>> GetAllByCityId(int id)
+        public async Task<IEnumerable<FullHotelDTO>> GetAllByCityId(int id)
         {
             var hotels = await _unitOfWork.HotelRepository.Get(filter: h => h.CityId == id);
-            return _mapper.Map<List<Hotel>, IEnumerable<HotelDTO>>(hotels);
+            return _mapper.Map<List<Hotel>, IEnumerable<FullHotelDTO>>(hotels);
         }
         public async Task Update(int id, HotelDTO hotelDTO)
         {

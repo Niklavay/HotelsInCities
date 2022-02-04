@@ -10,6 +10,7 @@ namespace HotelsInCities.Services.Services.MappingProfiles
         public HotelProfile()
         {
             CreateMap<Hotel, HotelDTO>();
+            CreateMap<Hotel, FullHotelDTO>();
         }
     }
 }

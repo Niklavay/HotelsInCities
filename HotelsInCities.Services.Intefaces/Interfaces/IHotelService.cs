@@ -14,7 +14,7 @@ namespace HotelsInCities.Services.Intefaces.Interfaces
         Task Create(HotelDTO hotelDTO);
         Task<HotelDTO> GetById(int id);
         Task<IEnumerable<HotelDTO>> GetAll();
-        Task<IEnumerable<HotelDTO>> GetAllByCityId(int id);
+        Task<IEnumerable<FullHotelDTO>> GetAllByCityId(int id);
         Task Update(int id, HotelDTO hotelDTO);
         Task Delete(int id);
     }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HotelsInCities.Domain.Core.Hotel>
+﻿@using HotelsInCities.Services.Intefaces.DTO_s.Hotel
+@model IEnumerable<FullHotelDTO>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -45,7 +46,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=hotel.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=hotel.Id  }) |
             @Html.ActionLink("Delete", "Delete", new { id=hotel.Id })
         </td>
     </tr> 

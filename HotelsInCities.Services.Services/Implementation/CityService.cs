@@ -19,10 +19,10 @@ namespace HotelsInCities.Services.Services.Implementation
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CityService(IUnitOfWork unitOfWork, IMapper _mapper)
+        public CityService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
-            _mapper = _mapper;
+            _mapper = mapper;
         }
 
         public async Task Create(CityDTO cityDTO)
@@ -47,8 +47,8 @@ namespace HotelsInCities.Services.Services.Implementation
 
         public async Task<IEnumerable<FullCityDTO>> GetAll()
         {
-            var result = await _unitOfWork.CityRepository.GetAll();
-            return _mapper.Map<List<City>,IEnumerable<FullCityDTO>>(result);
+            var cities = await _unitOfWork.CityRepository.GetAll();
+            return _mapper.Map<IEnumerable<FullCityDTO>>(cities);
         }
 
         public async Task<IEnumerable<CityForCreationHotelDTO>> GetAllForHotelCreation()

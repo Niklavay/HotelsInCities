@@ -11,9 +11,9 @@ namespace HotelsInCities.Controllers
         {
             _weatherForecastService = weatherForecastService;
         }
-        public async Task<IActionResult> Index(int cityId)
+        public async Task<IActionResult> Index(int id)
         {
-            var result = await _weatherForecastService.GetWeatherForecast(cityId);
+            var result = await _weatherForecastService.GetWeatherForecast(id);
             return View(result);
         }
     }

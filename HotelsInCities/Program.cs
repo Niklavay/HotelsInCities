@@ -11,10 +11,9 @@ builder.Services.AddDbContext<HICDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
 builder.Services.AddRepository();
 builder.Services.AddServices();
-builder.Services.AddMapper(builder.Configuration);
+builder.Services.AddMapper();
 
 var app = builder.Build();
 
