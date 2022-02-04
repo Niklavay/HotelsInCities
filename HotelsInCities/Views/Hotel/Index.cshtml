@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Core.Hotel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if(Model.Count() != 0)
+{
+    <table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomsCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var hotel in Model) {
+    
+           <tr>
+        <td>
+           @Html.DisplayFor(modelItem => hotel.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => hotel.HotelRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => hotel.RoomsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => hotel.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=hotel.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=hotel.Id  }) |
+            @Html.ActionLink("Delete", "Delete", new { id=hotel.Id })
+        </td>
+    </tr> 
+        
+    }
+
+    </table>
+}
+else
+{
+    <h3>There are no hotels in this city</h3>
+}
+

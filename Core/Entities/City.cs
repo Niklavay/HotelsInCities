@@ -10,22 +10,23 @@ namespace Core
         public int Id { get; private set; } 
 
         [Required(ErrorMessage = "Please name the city.")]
-        public string? Name { get; private set; }
+        public string Name { get; private set; }
 
         [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Only positive number allowed")]
         public int Population { get; private set; }
 
         [Required(ErrorMessage = "Every city has it's own coordinates.")]
-        public int Longitude { get; private set; }
+        public double Longitude { get; private set; }
 
         [Required(ErrorMessage = "Every city has it's own coordinates.")]
-        public int Latitude { get; private set; }
+        public double Latitude { get; private set; }
 
         public City()
         {
         }
 
-        public City (string name, int population, int latitude, int longitude)
+        public City (string name, int population, double latitude, double longitude)
         {
             Name = name;
             Population = population;
@@ -36,6 +37,13 @@ namespace Core
         public IEnumerable<Hotel> Hotels
         {
             get { return hotels; }
+        }
+
+        public void ChangeInfo(string name, int population, double latitude, double longitude)
+        {
+            RenameCity(name);
+            ChangeLatitudeLongitude(latitude, longitude);
+            ChangeAmountOfPopulation(population);
         }
 
         public void AddHotel(Hotel hotel)
@@ -56,16 +64,18 @@ namespace Core
 
         public void RenameCity(string newName)
         {
-            Name = newName; 
+            if(newName != null)
+                Name = newName; 
         }
         public void ChangeAmountOfPopulation(int newPopulation)
         {
-            Population = newPopulation;
+            if(newPopulation >= 0)
+                Population = newPopulation;
         }
-
-        /*public void ChangeGPSCoordinates(int newLon)
+        public void ChangeLatitudeLongitude(double latitude, double longitude)
         {
-            GPSCoordinates = newGPSCoordinates;
-        }*/
+            Latitude = latitude;
+            Longitude= longitude;
+        }
     }
 }

@@ -30,6 +30,20 @@ namespace Core
             Comment = comment;
         }
 
+        public void ChangeInfo(
+            string name,
+            HotelRating hotelRating,
+            int cityId,
+            int roomsCount,
+            string comment
+            )
+        {
+            ChangeHotelName(name);
+            ChangeHotelRating(hotelRating);
+            ChangeAmountOfRooms(roomsCount);
+            ChangeComment(comment);
+            ChangeCity(cityId);
+        }
         public void ChangeHotelName(string name)
         {
             if(name != null)

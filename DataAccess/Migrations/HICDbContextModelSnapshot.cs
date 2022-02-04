@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataAccess.Migrations
+namespace HotelsInCities.Infrastructure.DataAccess.Migrations
 {
     [DbContext(typeof(HICDbContext))]
     partial class HICDbContextModelSnapshot : ModelSnapshot
@@ -29,8 +29,11 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("GPSCoordinates")
-                        .HasColumnType("int");
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .IsRequired()
