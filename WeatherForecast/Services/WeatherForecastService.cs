@@ -37,12 +37,6 @@ namespace HotelsInCities.Infrastructure.WeatherForecast.Services
                 var rawWeather = JsonConvert.DeserializeObject<WeatherForecastViewModel>(stringResult);
 
                 return rawWeather;
-                    /*new WeatherForecastResponse
-                {
-                    City = rawWeather.Name,
-                    Temp = rawWeather.Main.Temp,
-                    Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main))
-                };*/
             }
         }
     }

@@ -16,7 +16,14 @@ namespace HotelsInCities.Infrastructure.WeatherForecast.ViewModels
 
     public class CurrentWeather
     {
-        public string Main { get; set; }    
+        public int Clouds { get; set; }    
+        public string WindSpeed { get; set; }
+        public List<Weather> Weather { get; set; }
+    }
+
+    public class Weather
+    {
+        public string Main { get; set; }
         public string Description { get; set; }
     }
 }
