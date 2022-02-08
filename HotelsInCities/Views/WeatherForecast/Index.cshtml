@@ -1,0 +1,44 @@
+﻿@using HotelsInCities.Infrastructure.WeatherForecast.ViewModels
+@model WeatherForecastViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Weather Forecast</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Timezone)
+        </th>
+    </tr>
+
+
+   
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Lat)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Lon)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Timezone)
+        </td>
+    </tr> 
+
+</table>
