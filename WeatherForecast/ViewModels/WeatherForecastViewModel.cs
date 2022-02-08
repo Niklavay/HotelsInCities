@@ -8,9 +8,15 @@ namespace HotelsInCities.Infrastructure.WeatherForecast.ViewModels
 {
     public class WeatherForecastViewModel
     {
-        public int Temperature { get; set; }
-        public int FeelsLikeTemperature { get; set; }
-        public int WindSpeed { get; set; }
-        public int Clouds { get; set; }
+        public int Lat { get; set; }
+        public int Lon { get; set; }
+        public string Timezone { get; set; }
+        public CurrentWeather Current { get; set; }
+    }
+
+    public class CurrentWeather
+    {
+        public string Main { get; set; }    
+        public string Description { get; set; }
     }
 }

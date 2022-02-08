@@ -22,7 +22,7 @@ namespace HotelsInCities.Infrastructure.WeatherForecast.Services
             _cityService = cityService;
             _configuration = configuration;
         }
-        public async Task<string> GetWeatherForecast(int cityId)
+        public async Task<WeatherForecastViewModel> GetWeatherForecast(int cityId)
         {
             var city = await _cityService.GetById(cityId);
             using (var client = new HttpClient())
@@ -33,12 +33,15 @@ namespace HotelsInCities.Infrastructure.WeatherForecast.Services
                 
                 var stringResult = await response.Content.ReadAsStringAsync();
 
-                return stringResult;
-               /* var rawWeather = JsonConvert.DeserializeObject<OpenWeatherResponse>(stringResult);
+               
+                var rawWeather = JsonConvert.DeserializeObject<WeatherForecastViewModel>(stringResult);
 
-                return new WeatherForecastResponse { City = rawWeather.Name,
-                                                     Temp = rawWeather.Main.Temp,
-                                                     Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main)) 
+                return rawWeather;
+                    /*new WeatherForecastResponse
+                {
+                    City = rawWeather.Name,
+                    Temp = rawWeather.Main.Temp,
+                    Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main))
                 };*/
             }
         }
