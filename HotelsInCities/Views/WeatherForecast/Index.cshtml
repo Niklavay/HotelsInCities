@@ -22,6 +22,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Timezone)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Current.Clouds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Current.WindSpeed)
+        </th>
     </tr>
 
 
@@ -38,6 +44,12 @@
         </td>
         <td>
             @Html.DisplayFor(model => model.Timezone)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Current.Clouds)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Current.WindSpeed)
         </td>
     </tr> 
 
