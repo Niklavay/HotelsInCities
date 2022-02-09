@@ -1,0 +1,57 @@
+﻿@using HotelsInCities.Application.Intefaces.Dtos.City
+@model IEnumerable<FullCityDto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Population)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var city in Model) {
+   
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => city.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => city.Population)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => city.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => city.Latitude)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=city.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=city.Id }) |
+            @Html.ActionLink("Show hotels", "Hotels", new { id=city.Id  }) |
+            @Html.ActionLink("Show Weather Forecast", "WeatherForecast", new { id=city.Id })
+        </td>
+    </tr> 
+      
+        
+}
+
+</table>
