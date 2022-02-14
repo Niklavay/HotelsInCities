@@ -1,5 +1,6 @@
 ﻿using Core.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace HotelsInCities.Domain.Core
 {
@@ -8,7 +9,7 @@ namespace HotelsInCities.Domain.Core
         private readonly List<Hotel> hotels = new List<Hotel>();
 
         public int Id { get; private set; } 
-
+        [NotNull]
         [Required(ErrorMessage = "Please name the city.")]
         public string Name { get; private set; }
 
@@ -22,7 +23,7 @@ namespace HotelsInCities.Domain.Core
         [Required(ErrorMessage = "Every city has it's own coordinates.")]
         public double Latitude { get; private set; }
 
-        public City()
+        private City()
         {
         }
 
