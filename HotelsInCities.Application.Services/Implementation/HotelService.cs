@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using HotelsInCities.Application.Intefaces.Dtos.Hotel;
 using HotelsInCities.Application.Intefaces.Interfaces;
-using HotelsInCities.Domain.Core;
 using HotelsInCities.Domain.Core.Entities;
 using HotelsInCities.Domain.Interfaces.Repositories.UnitOfWork;
 

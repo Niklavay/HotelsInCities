@@ -1,13 +1,6 @@
-﻿using HotelsInCities.Infrastructure.WeatherForecast.ResponseEntities;
-using HotelsInCities.Infrastructure.WeatherForecast.Services;
-using HotelsInCities.Infrastructure.WeatherForecast.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HotelsInCities.Domain.Common.ViewModels;
 
-namespace HotelsInCities.Infrastructure.WeatherForecast.Interfaces
+namespace HotelsInCities.Domain.Interfaces.WeatherForecast
 {
     public interface IWeatherForeacstService
     {

@@ -3,15 +3,17 @@ using DataAccess;
 using HotelsInCities.Infrastructure.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace HotelsInCities.Infrastructure.DataAccess.Migrations
 {
     [DbContext(typeof(HICDbContext))]
-    [Migration("20220203193928_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20220215100713_AddNewEntityUser")]
+    partial class AddNewEntityUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +24,7 @@ namespace HotelsInCities.Infrastructure.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Core.City", b =>
+            modelBuilder.Entity("HotelsInCities.Domain.Core.Entities.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +50,7 @@ namespace HotelsInCities.Infrastructure.DataAccess.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("Core.Hotel", b =>
+            modelBuilder.Entity("HotelsInCities.Domain.Core.Entities.Hotel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,9 +82,34 @@ namespace HotelsInCities.Infrastructure.DataAccess.Migrations
                     b.ToTable("Hotels");
                 });
 
-            modelBuilder.Entity("Core.Hotel", b =>
+            modelBuilder.Entity("HotelsInCities.Domain.Core.Entities.User", b =>
                 {
-                    b.HasOne("Core.City", "City")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("HotelsInCities.Domain.Core.Entities.Hotel", b =>
+                {
+                    b.HasOne("HotelsInCities.Domain.Core.Entities.City", "City")
                         .WithMany("Hotels")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -91,7 +118,7 @@ namespace HotelsInCities.Infrastructure.DataAccess.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("Core.City", b =>
+            modelBuilder.Entity("HotelsInCities.Domain.Core.Entities.City", b =>
                 {
                     b.Navigation("Hotels");
                 });

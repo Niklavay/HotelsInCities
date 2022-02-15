@@ -1,5 +1,6 @@
 ﻿using HotelsInCities.Domain.Core.Entities;
 using HotelsInCities.Domain.Interfaces.Repositories;
+using HotelsInCities.Infrastructure.DataAccess.Contexts;
 using HotelsInCities.Infrastructure.DataAccess.Repositories.Generic;
 
 namespace DataAccess.Repositories

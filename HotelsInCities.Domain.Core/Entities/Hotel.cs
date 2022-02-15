@@ -1,4 +1,4 @@
-﻿using HotelsInCities.Domain.Core.Enums;
+﻿using HotelsInCities.Domain.Common.Enums;
 using HotelsInCities.Domain.Core.Generic;
 
 namespace HotelsInCities.Domain.Core.Entities
@@ -23,11 +23,7 @@ namespace HotelsInCities.Domain.Core.Entities
             string comment
             )
         {
-            Name = name;
-            HotelRating = hotelRating;
-            CityId = cityId;
-            RoomsCount = roomsCount;
-            Comment = comment;
+            ChangeInfo(name, hotelRating, cityId, roomsCount, comment);
         }
 
         public void ChangeInfo(

@@ -21,9 +21,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\HotelsInCities.Application.Intefaces\HotelsInCities.Application.Intefaces.csproj" />
-    <ProjectReference Include="..\HotelsInCities.Web\HotelsInCities.Web.csproj" />
-  </ItemGroup>
-
 </Project>

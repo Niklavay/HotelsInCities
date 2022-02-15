@@ -29,10 +29,7 @@ namespace HotelsInCities.Domain.Core.Entities
 
         public City (string name, int population, double latitude, double longitude)
         {
-            Name = name;
-            Population = population;
-            Latitude = latitude;
-            Longitude = longitude;
+            ChangeInfo(name, population, latitude, longitude);
         }
 
         public IEnumerable<Hotel> Hotels
@@ -40,9 +37,16 @@ namespace HotelsInCities.Domain.Core.Entities
             get { return hotels; }
         }
 
+        public void ChangeName(string name)
+        {
+            if(name != null)
+                Name = name;
+        }
+
         public void ChangeInfo(string name, int population, double latitude, double longitude)
         {
-            RenameCity(name);
+
+            ChangeName(name);
             ChangeLatitudeLongitude(latitude, longitude);
             ChangeAmountOfPopulation(population);
         }
@@ -63,11 +67,6 @@ namespace HotelsInCities.Domain.Core.Entities
                 return;
         }
 
-        public void RenameCity(string newName)
-        {
-            if(newName != null)
-                Name = newName; 
-        }
         public void ChangeAmountOfPopulation(int newPopulation)
         {
             if(newPopulation >= 0)

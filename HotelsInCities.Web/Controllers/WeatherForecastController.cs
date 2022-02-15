@@ -1,4 +1,4 @@
-﻿using HotelsInCities.Infrastructure.WeatherForecast.Interfaces;
+﻿using HotelsInCities.Domain.Interfaces.WeatherForecast;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelsInCities.Controllers
