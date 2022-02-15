@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace DataAccess
+namespace HotelsInCities.Infrastructure.DataAccess.Contexts
 {
     public class HICDbContext : DbContext
     {
@@ -13,6 +13,7 @@ namespace DataAccess
 
         public DbSet<City> Cities { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

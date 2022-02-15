@@ -3,11 +3,11 @@ using HotelsInCities.Domain.Interfaces.Repositories;
 using HotelsInCities.Infrastructure.DataAccess.Contexts;
 using HotelsInCities.Infrastructure.DataAccess.Repositories.Generic;
 
-namespace DataAccess.Repositories
+namespace HotelsInCities.Infrastructure.DataAccess.Repositories
 {
-    public class HotelRepository : GenericRepository<Hotel, int>, IHotelRepository
+    public class UserRepository : GenericRepository<User, int>, IUserRepository
     {
-        public HotelRepository(HICDbContext context) : base(context)
+        public UserRepository(HICDbContext context) : base(context)
         { }
     }
 }

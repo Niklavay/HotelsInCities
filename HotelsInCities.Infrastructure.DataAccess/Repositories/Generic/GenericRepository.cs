@@ -1,6 +1,6 @@
-﻿using DataAccess;
-using HotelsInCities.Domain.Core.Generic;
+﻿using HotelsInCities.Domain.Core.Generic;
 using HotelsInCities.Domain.Interfaces.Repositories.Generic;
+using HotelsInCities.Infrastructure.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;

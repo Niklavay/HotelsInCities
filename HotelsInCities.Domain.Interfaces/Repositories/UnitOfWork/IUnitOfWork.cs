@@ -4,6 +4,7 @@
     {
         ICityRepository CityRepository { get; }
         IHotelRepository HotelRepository { get; }
+        IUserRepository UserRepository { get; }
         Task SaveChangesAsync();
     }
 }

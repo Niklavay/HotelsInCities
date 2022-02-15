@@ -1,9 +1,8 @@
 ﻿using HotelsInCities.Application.Intefaces.Interfaces;
-using HotelsInCities.Infrastructure.WeatherForecast.Interfaces;
-using HotelsInCities.Infrastructure.WeatherForecast.ResponseEntities;
-using HotelsInCities.Infrastructure.WeatherForecast.ViewModels;
+using HotelsInCities.Domain.Common.ViewModels;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using HotelsInCities.Domain.Interfaces.WeatherForecast;
 
 namespace HotelsInCities.Infrastructure.WeatherForecast.Services
 {

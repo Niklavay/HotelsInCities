@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using HotelsInCities.Application.Intefaces.Dtos.City;
 using AutoMapper;
-using HotelsInCities.Domain.Core;
 using HotelsInCities.Application.Intefaces.Interfaces;
 using HotelsInCities.Domain.Core.Entities;
 using HotelsInCities.Domain.Interfaces.Repositories.UnitOfWork;
@@ -19,9 +18,9 @@ namespace HotelsInCities.Services.Services.Implementation
             _mapper = mapper;
         }
 
-        public async Task Create(CityDto cityDTO)
+        public async Task Create(CityDto cityDto)
         {
-            var newCity = new City(cityDTO.Name, cityDTO.Population, cityDTO.Latitude, cityDTO.Longitude);
+            var newCity = new City(cityDto.Name, cityDto.Population, cityDto.Latitude, cityDto.Longitude);
 
             await _unitOfWork.CityRepository.Insert(newCity);
             await _unitOfWork.SaveChangesAsync();
@@ -50,13 +49,13 @@ namespace HotelsInCities.Services.Services.Implementation
             var result = await _unitOfWork.CityRepository.GetAll(include: c => c.Include(c => c.Hotels));
             return _mapper.Map<List<City>, IEnumerable<CityForCreationHotelDto>>(result);
         }
-        public async Task Update(int id, CityDto cityDTO)
+        public async Task Update(int id, CityDto cityDto)
         {
-            if (cityDTO != null)
+            if (cityDto != null)
             {
                 var city = await _unitOfWork.CityRepository.GetById(id);
 
-                city.ChangeInfo(cityDTO.Name, cityDTO.Population,cityDTO.Latitude, cityDTO.Longitude);
+                city.ChangeInfo(cityDto.Name, cityDto.Population, cityDto.Latitude, cityDto.Longitude);
 
                 _unitOfWork.CityRepository.Update(city);
                 await _unitOfWork.SaveChangesAsync();

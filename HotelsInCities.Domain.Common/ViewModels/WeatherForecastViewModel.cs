@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelsInCities.Infrastructure.WeatherForecast.ViewModels
+namespace HotelsInCities.Domain.Common.ViewModels
 {
     public class WeatherForecastViewModel
     {

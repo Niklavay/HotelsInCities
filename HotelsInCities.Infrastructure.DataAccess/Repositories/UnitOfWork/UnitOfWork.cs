@@ -1,7 +1,7 @@
-﻿using DataAccess;
-using DataAccess.Repositories;
+﻿using DataAccess.Repositories;
 using HotelsInCities.Domain.Interfaces.Repositories;
 using HotelsInCities.Domain.Interfaces.Repositories.UnitOfWork;
+using HotelsInCities.Infrastructure.DataAccess.Contexts;
 
 namespace HotelsInCities.Infrastructure.DataAccess.Repositories.UnitOfWork
 {
@@ -10,6 +10,8 @@ namespace HotelsInCities.Infrastructure.DataAccess.Repositories.UnitOfWork
         private ICityRepository _cityRepository;
 
         private IHotelRepository _hotelRepository;
+
+        private IUserRepository _userRepository;
 
 
         private HICDbContext _context;
@@ -27,6 +29,11 @@ namespace HotelsInCities.Infrastructure.DataAccess.Repositories.UnitOfWork
         public IHotelRepository HotelRepository
         {
             get { return _hotelRepository ??= new HotelRepository(_context); }
+        }
+
+        public IUserRepository UserRepository
+        {
+            get { return _userRepository ??= new UserRepository(_context); }
         }
 
         public async Task SaveChangesAsync()

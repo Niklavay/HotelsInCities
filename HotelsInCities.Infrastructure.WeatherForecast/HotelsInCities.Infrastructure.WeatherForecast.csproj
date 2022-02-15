@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HotelsInCities.Application.Intefaces\HotelsInCities.Application.Intefaces.csproj" />
+    <ProjectReference Include="..\HotelsInCities.Domain.Common\HotelsInCities.Domain.Common.csproj" />
+    <ProjectReference Include="..\HotelsInCities.Domain.Interfaces\HotelsInCities.Domain.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

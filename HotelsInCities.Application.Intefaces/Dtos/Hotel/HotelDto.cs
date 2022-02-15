@@ -1,4 +1,4 @@
-﻿using HotelsInCities.Domain.Core.Enums;
+﻿using HotelsInCities.Domain.Common.Enums;
 
 namespace HotelsInCities.Application.Intefaces.Dtos.Hotel
 {
