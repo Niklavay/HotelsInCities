@@ -10,7 +10,7 @@ namespace HotelsInCities.ServicesConfiguration
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddTransient<ICityService, CityService>();
+            services.AddScoped<CityService>();
             services.AddTransient<IHotelService, HotelService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IWeatherForeacstService, WeatherForecastService>();

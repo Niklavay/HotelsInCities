@@ -1,10 +1,12 @@
 ﻿using HotelsInCities.Application.Intefaces.Dtos.Hotel;
 using HotelsInCities.Application.Intefaces.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HotelsInCities.Controllers
 {
+    [Authorize]
     public class HotelController : Controller
     {
         private readonly IHotelService _hotelService;
@@ -16,6 +18,7 @@ namespace HotelsInCities.Controllers
             _cityService = cityService;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index(int id)
         {
             var result = await _hotelService.GetAllByCityId(id);
@@ -33,6 +36,7 @@ namespace HotelsInCities.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HotelDto hotelDTO)
         {
+            //this.User.Identity.IsAuthenticated
             try
             {
                 await _hotelService.Create(hotelDTO);

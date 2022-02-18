@@ -1,4 +1,5 @@
-﻿using HotelsInCities.Domain.Core.Generic;
+﻿using HotelsInCities.Domain.Common.Enums;
+using HotelsInCities.Domain.Core.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
@@ -6,7 +7,7 @@ namespace HotelsInCities.Domain.Core.Entities
 {
     public class City : IGenericEntity<int>
     {
-        private readonly List<Hotel> hotels = new List<Hotel>();
+        private readonly List<Hotel> _hotels = new List<Hotel>();
 
         public int Id { get; private set; } 
         [NotNull]
@@ -29,12 +30,16 @@ namespace HotelsInCities.Domain.Core.Entities
 
         public City (string name, int population, double latitude, double longitude)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException($"Argument '{nameof(name)}' cannot be empty!");
+            if (population < 0) throw new ArgumentException($"Argument '{nameof(population)}' cannot be negative!");
+
+            Name = name;
             ChangeInfo(name, population, latitude, longitude);
         }
 
         public IEnumerable<Hotel> Hotels
         {
-            get { return hotels; }
+            get { return _hotels; }
         }
 
         public void ChangeName(string name)
@@ -51,18 +56,30 @@ namespace HotelsInCities.Domain.Core.Entities
             ChangeAmountOfPopulation(population);
         }
 
-        public void AddHotel(Hotel hotel)
+        public void AddHotel(
+            string name,
+            HotelRating hotelRating,
+            int roomsCount,
+            string comment = null)
         {
-            if (hotels.Contains(hotel))
-                return;
+            if (_hotels.Any(h => h.Name == name))
+            {
+                //throw
+            }
 
-            hotels.Add(hotel);
+            var hotel = new Hotel(
+                name,
+                hotelRating,
+                roomsCount,
+                comment);
+
+            _hotels.Add(hotel);
         }
 
         public void Removehotel(Hotel hotel)
         {
-            if(hotels.Contains(hotel))
-                hotels.Remove(hotel);
+            if(_hotels.Contains(hotel))
+                _hotels.Remove(hotel);
             else
                 return;
         }
