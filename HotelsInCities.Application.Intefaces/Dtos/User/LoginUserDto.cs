@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelsInCities.Application.Intefaces.Dtos.User
 {
-    public class CreateUserDto
+    public class LoginUserDto
     {
         [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
@@ -15,9 +15,5 @@ namespace HotelsInCities.Application.Intefaces.Dtos.User
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Password is incorrect")]
-        public string ConfirmPassword { get; set; }
     }
 }

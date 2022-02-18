@@ -1,9 +1,11 @@
 ﻿using HotelsInCities.Application.Intefaces.Dtos.City;
 using HotelsInCities.Application.Intefaces.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelsInCities.Controllers
 {
+    [Authorize]
     public class CityController : Controller
     {
         private readonly ICityService _cityService;
@@ -11,6 +13,7 @@ namespace HotelsInCities.Controllers
         {
             _cityService = cityService;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var result = await _cityService.GetAll();
@@ -78,12 +81,12 @@ namespace HotelsInCities.Controllers
                 return View();
             }
         }
-
+        [AllowAnonymous]
         public ActionResult Hotels(int id)
         {
             return RedirectToAction("Index", "Hotel", new { id = id });
         }
-
+        [AllowAnonymous]
         public ActionResult WeatherForecast(int id)
         {
             return RedirectToAction("Index", "WeatherForecast", new {id = id});

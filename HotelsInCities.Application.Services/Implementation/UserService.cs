@@ -17,23 +17,43 @@ namespace HotelsInCities.Application.Services.Implementation
             _mapper = mapper;
         }
 
-        public async Task Create(CreateUserDto userDto)
+        public async Task<bool> Create(CreateUserDto userDto)
         {
+            if(!await AlreadyExist(userDto.Email))
+            {
+                try
+                {
+                    var newUser = new User(userDto.Email, userDto.Password);
 
-            var newUser = new User(userDto.Name, userDto.Login, userDto.Password);
+                    await _unitOfWork.UserRepository.Insert(newUser);
+                    await _unitOfWork.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception e)
+                {
 
-            await _unitOfWork.UserRepository.Insert(newUser);
-            await _unitOfWork.SaveChangesAsync();
+                    throw new ArgumentException(e.Message);
+                }
+                
+            }
+            return false;
         }
 
-        public Task Delete(int id)
+        public async Task<UserDto> GetById(int id)
         {
-            throw new NotImplementedException();
+            var user = await _unitOfWork.UserRepository.GetById(id);
+            return _mapper.Map<UserDto>(user);
         }
 
-        public Task<UserDto> GetById(int id)
+        public async Task<UserDto> GetByEmail(string email)
         {
-            throw new NotImplementedException();
+            var user = (await _unitOfWork.UserRepository.Get(u => u.Email == email)).FirstOrDefault();
+            return _mapper.Map<UserDto>(user);
+        }
+
+        public async Task<bool> AlreadyExist(string email)
+        {
+            return (await _unitOfWork.UserRepository.Get(u => u.Email == email)).Any();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HotelsInCities.Application.Services.MappingProfiles;
 using HotelsInCities.Services.Services.MappingProfiles;
 
 namespace HotelsInCities.ServicesConfiguration
@@ -11,6 +12,7 @@ namespace HotelsInCities.ServicesConfiguration
             {
                 mc.AddProfile(new CityProfile());
                 mc.AddProfile(new HotelProfile());
+                mc.AddProfile(new UserProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

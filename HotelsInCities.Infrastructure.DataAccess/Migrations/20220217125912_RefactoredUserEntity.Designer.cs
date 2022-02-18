@@ -3,6 +3,7 @@ using HotelsInCities.Infrastructure.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelsInCities.Infrastructure.DataAccess.Migrations
 {
     [DbContext(typeof(HICDbContext))]
-    partial class HICDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220217125912_RefactoredUserEntity")]
+    partial class RefactoredUserEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

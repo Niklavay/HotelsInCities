@@ -9,8 +9,10 @@ namespace HotelsInCities.Application.Intefaces.Interfaces
 {
     public interface IUserService
     {
-        Task Create(CreateUserDto user);
+        Task<bool> Create(CreateUserDto userDto);
         Task<UserDto> GetById(int id);
-        Task Delete(int id);
+        Task<UserDto> GetByEmail(string email);
+        Task<bool> AlreadyExist(string email);
+
     }
 }

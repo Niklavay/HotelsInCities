@@ -1,6 +1,6 @@
-using DataAccess;
 using HotelsInCities.Infrastructure.DataAccess.Contexts;
 using HotelsInCities.ServicesConfiguration;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -19,21 +19,12 @@ builder.Services.AddRepository();
 builder.Services.AddServices();
 builder.Services.AddMapper();
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-  .AddJwtBearer(options =>
-  {
-      options.SaveToken = true;
-      options.RequireHttpsMetadata = false;
-      options.TokenValidationParameters = new TokenValidationParameters()
-      {
-          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
-      };
-});
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new PathString("/User/Login");
+                });
 
 var app = builder.Build();
 

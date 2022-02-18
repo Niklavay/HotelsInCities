@@ -5,40 +5,32 @@ namespace HotelsInCities.Domain.Core.Entities
     public class User : IGenericEntity<int>
     {
         public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Login { get; private set; }
+        public string Email { get; private set; }
         public string Password { get; private set; }
 
         private User() { }
 
-        public User(string name, string login, string password)
+        public User(string email, string password)
         {
-            Name = name;
+           ChangeInfo(email, password);
         }
 
-        public void ChangeInfo(string name, string login, string password)
+        public void ChangeInfo(string email, string password)
         {
-            ChangeName(name);
-            ChangeLogin(login); 
+            ChangeLogin(email); 
             ChangePassword(password);
         }
 
-        public void ChangeLogin(string login)
+        public void ChangeLogin(string email)
         {
-            if(login != null)
-                Login = login;
+            if(email != null)
+                Email = email;
         }
 
         public void ChangePassword(string password)
         {
             if(password != null)
                 Password = password;
-        }
-
-        public void ChangeName(string name)
-        {
-            if(name != null)
-                Name = name;
         }
     }
 }
